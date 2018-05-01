@@ -1,73 +1,27 @@
-# Angular-5-With-Bootstrap-4
+# Eventmanager
 
-### INSTALLING ANGULAR CLI
-npm install -g @angular/cli
+This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 1.7.4.
 
-### CREATE A NEW APPLICATION
-ng new eventmanager --style=scss
-cd eventmanager
-ng serve
+## Development server
 
-### ADD BOOTSTRAP & BOOTSWATCH
-npm install --save bootstrap
-npm install --save bootswatch
-src/styles.scss
-@import "~bootswatch/dist/yeti/_variables.scss";
-@import "~bootstrap/scss/bootstrap.scss";
-@import "~bootswatch/dist/yeti/_bootswatch.scss";
+Run `ng serve` for a dev server. Navigate to `http://localhost:4200/`. The app will automatically reload if you change any of the source files.
 
-### ADDING FONT-AWESOME
-npm install --save font-awesome
-```
-.angular-cli.json
-{
-  "apps": {
-    "styles": [
-      "styles.scss",
-      "../node_modules/font-awesome/scss/font-awesome.scss"
-    ],
-    "addons": [
-      "../node_modules/font-awesome/fonts/*.+(otf|eot|svg|ttf|woff|woff2)"
-    ]
-  }
-}
-```
-### CREATING A HOME COMPONENT
-ng g component home
-```
-/src/app/home/home.component.html
-<div class="jumbotron">
-  <h3>Welcome to the Event Manager!</h3>
-</div>
-```
-### ADDING ROUTES FOR HOME COMPNENT
-/src/app/app.module.ts
-```
-import { RouterModule } from '@angular/router';
-@NgModule({
-  ...
-  imports: [
-    ...
-    RouterModule.forRoot([
-      {
-        path: '',
-        redirectTo: '/home',
-        pathMatch: 'full'
-      },
-      {
-        path: 'home',
-        component: HomeComponent
-      }
-    ])
-  ],
-  ...
-})
-```
+## Code scaffolding
 
-### CREATE MAIN PAGE CONTENT
-/src/app/app.component.html
-```
-<div class="container" style="margin-top: 10px;">
-  <router-outlet></router-outlet>
-</div>
-```
+Run `ng generate component component-name` to generate a new component. You can also use `ng generate directive|pipe|service|class|guard|interface|enum|module`.
+
+## Build
+
+Run `ng build` to build the project. The build artifacts will be stored in the `dist/` directory. Use the `-prod` flag for a production build.
+
+## Running unit tests
+
+Run `ng test` to execute the unit tests via [Karma](https://karma-runner.github.io).
+
+## Running end-to-end tests
+
+Run `ng e2e` to execute the end-to-end tests via [Protractor](http://www.protractortest.org/).
+
+## Further help
+
+To get more help on the Angular CLI use `ng help` or go check out the [Angular CLI README](https://github.com/angular/angular-cli/blob/master/README.md).
