@@ -1,18 +1,28 @@
 import { Injectable } from '@angular/core';
+import { Subject } from 'rxjs/Subject';
+import { IEvent } from './model/event.model';
+import { Observer } from 'rxjs/Observer';
 
 @Injectable()
 export class EventService {
-    getEvents() {
-        return EVENTS;
+    getEvents(): Observer<IEvent[]> {
+        const subject = new Subject<IEvent[]>();
+        setTimeout(() => {
+            subject.next(EVENTS);
+            subject.complete();
+        });
+        return subject;
+    }
+    getEvent(id: number): IEvent {
+        return EVENTS.find(event => event.id === id);
     }
 }
 
-
-const EVENTS = [
+const EVENTS: IEvent[] = [
     {
         id: 1,
         name: 'Angular Connect',
-        date: '9/26/2036',
+        date: new Date('9/26/2036'),
         time: '10:00 am',
         price: 599.99,
         imageUrl: '/app/assets/images/angularconnect-shield.png',
@@ -90,15 +100,11 @@ const EVENTS = [
     {
         id: 2,
         name: 'ng-nl',
-        date: '4/15/2037',
+        date: new Date('4/15/2037'),
         time: '9:00 am',
         price: 950.00,
         imageUrl: '/app/assets/images/ng-nl.png',
-        location: {
-            address: 'The NG-NL Convention Center & Scuba Shop',
-            city: 'Amsterdam',
-            country: 'Netherlands'
-        },
+        onlineUrl: 'http://ng-nl.org/',
         sessions: [
             {
                 id: 1,
@@ -150,7 +156,7 @@ const EVENTS = [
     {
         id: 3,
         name: 'ng-conf 2037',
-        date: '5/4/2037',
+        date: new Date('5/4/2037'),
         time: '9:00 am',
         price: 759.00,
         imageUrl: '/app/assets/images/ng-conf.png',
@@ -232,7 +238,7 @@ const EVENTS = [
     {
         id: 4,
         name: 'UN Angular Summit',
-        date: '6/10/2037',
+        date: new Date('6/10/2037'),
         time: '8:00 am',
         price: 800.00,
         imageUrl: '/app/assets/images/basic-shield.png',
@@ -281,7 +287,7 @@ const EVENTS = [
     {
         id: 5,
         name: 'ng-vegas',
-        date: '2/10/2037',
+        date: new Date('2/10/2037'),
         time: '9:00 am',
         price: 400.00,
         imageUrl: '/app/assets/images/ng-vegas.png',
