@@ -1,11 +1,11 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
+import { ReactiveFormsModule } from '@angular/forms';
 
 import { AppComponent } from './app.component';
 
 // added barrel
-
 import {
   CreateEventComponent,
   EventDetailsComponent,
@@ -24,6 +24,7 @@ import { appRoutes } from './routes';
 import { Error404Component } from './components/shared/error/404.component';
 import { EventRouteActivator } from './components/event-details/event-route-activator';
 import { EventListResolver } from './components/shared/event-list-resolver.service';
+import { AuthService } from './user/auth.service';
 
 @NgModule({
   declarations: [
@@ -38,9 +39,13 @@ import { EventListResolver } from './components/shared/event-list-resolver.servi
   ],
   imports: [
     BrowserModule,
+    ReactiveFormsModule,
     RouterModule.forRoot(appRoutes)
   ],
-  providers: [EventService, EventRouteActivator,
+  providers: [
+    EventService,
+    EventRouteActivator,
+    AuthService,
     EventListResolver,
     {
       provide: 'canDeactivateCreateEvent',
