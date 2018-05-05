@@ -15,15 +15,15 @@
         </li>
       </ul>
       
-      <form class="form-inline my-2 my-lg-0">
-        <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search">
-        <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-      </form>
+      <!-- <form class="form-inline my-2 my-lg-0"> -->
+        <!-- <input class="form-control mr-sm-2" type="search" placeholder="Search" aria-label="Search"> -->
+        <!-- <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button> -->
+      <!-- </form> -->
       <div class="navbar-header navbar-right">
         <ul class="nav navbar-nav">
           <li>
             <a *ngIf="!auth.isAuthenticated()" [routerLink]="['user/login']">Login</a>
-            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{auth.currentUser.userName}}</a>
+            <a *ngIf="auth.isAuthenticated()" [routerLink]="['user/profile']">Welcome {{auth.currentUser.firstName}}</a>
 
           </li>
         </ul>
